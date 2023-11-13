@@ -1,6 +1,5 @@
 class Nav {
   static #HOME_PAGE = 'https://google.com'
-
   static #back = () => {
     return history.back()
   }
@@ -31,13 +30,12 @@ class Nav {
     return this.#changePage(this.#HOME_PAGE)
   }
 
-  static #init = () => {
-    window.back.onclick = this.#back
-    window.forward.onclick = this.#forward
-    window.reload.onclick = this.#reload
-    window.home.onclick = this.#home
-    window.go.onclick = this.#go
-
+  static init = () => {
+    window.back.onclick = this.#back.bind(this)
+    window.forward.onclick = this.#forward.bind(this)
+    window.reload.onclick = this.#reload.bind(this)
+    window.home.onclick = this.#home.bind(this)
+    window.go.onclick = this.#go.bind(this)
     window.input.value = location.href
   }
 }
